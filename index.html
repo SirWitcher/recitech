@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <!-- Meta tag corrigida para travar o zoom e a largura no celular -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ReciTech - Sustentabilidade</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- TELA DE LOGIN -->
+    <div id="login-screen" class="full-screen">
+        <div class="login-card">
+            <span class="logo">ReciTech</span>
+            <h2>Bem-vindo</h2>
+            <p>Entre com seu nome do grupo</p>
+            <input type="text" id="user-input" placeholder="Nome (Ex: Samille)">
+            <input type="password" id="pass-input" placeholder="Senha">
+            <button class="btn-redeem" onclick="handleLogin()">Acessar Conta</button>
+            <p class="footer-note">Equipe: Samille, Maria, Juan e Daniel &copy; 2026</p>
+        </div>
+    </div>
+
+    <!-- APP PRINCIPAL -->
+    <div id="app-screen" class="hidden">
+        <header>
+            <span class="logo">ReciTech</span>
+            <div class="header-actions">
+                <button id="admin-btn" class="btn-admin hidden" onclick="masterReset()">Reset Sistema</button>
+                <button class="btn-logout" onclick="handleLogout()">Sair</button>
+            </div>
+        </header>
+
+        <main>
+            <section class="balance-card">
+                <p>Olá, <span id="user-name-display">Usuário</span>!</p>
+                <div class="points-display">
+                    <span class="currency">pts</span>
+                    <h1 id="total-points">0</h1>
+                </div>
+            </section>
+
+            <section class="badges-area">
+                <div class="badges-row">
+                    <div class="badge-item" id="badge-1"><span class="badge-icon">🌱</span><p>Iniciante</p></div>
+                    <div class="badge-item" id="badge-2"><span class="badge-icon">⭐</span><p>Bronze</p></div>
+                    <div class="badge-item" id="badge-3"><span class="badge-icon">🏆</span><p>Mestre</p></div>
+                </div>
+            </section>
+
+            <section class="notifications-center">
+                <div class="mission-card">
+                    <span class="mission-tag">Missão do Dia</span>
+                    <div class="mission-info">
+                        <h4>Convide um Vizinho</h4>
+                        <p>Ganhe 100 pts extras na próxima coleta.</p>
+                    </div>
+                </div>
+
+                <div id="flash-deal" class="flash-card hidden">
+                    <div class="flash-timer">⚡ Expira em: <span id="timer">05:00</span></div>
+                    <h4>BÔNUS KOCH: Pontos em Dobro!</h4>
+                    <p>Recicle agora e ganhe 500 pts por garrafa.</p>
+                </div>
+            </section>
+
+            <div class="actions-grid">
+                <button class="btn-main" onclick="openScanner()">
+                    <div class="icon-circle">📷</div><span>Escanear QR</span>
+                </button>
+                <button class="btn-main" onclick="toggleHistory()">
+                    <div class="icon-circle">📊</div><span>Ranking / Extrato</span>
+                </button>
+            </div>
+
+            <section class="impact-card">
+                <div class="impact-header"><h4>Impacto Ambiental</h4><span>🌿</span></div>
+                <div class="impact-stats">
+                    <div class="stat-item"><span id="eco-co2">0.0</span><p>kg CO2</p></div>
+                    <div class="stat-item"><span id="eco-water">0.0</span><p>L Água</p></div>
+                </div>
+            </section>
+
+            <section class="rewards-area">
+                <h3>Resgates</h3>
+                <div class="market-card">
+                    <div class="market-img-container">
+                        <img src="kochimage.webp" alt="Logo Koch">
+                    </div>
+                    <div class="market-content">
+                        <h4>Koch / Komprão</h4>
+                        <p>Troque 500 pts por R$ 10,00.</p>
+                        <button class="btn-redeem" onclick="redeemPoints(500)">Resgatar</button>
+                    </div>
+                </div>
+            </section>
+
+            <section id="history-section" class="history-container hidden">
+                <hr class="divider">
+                <h3>🏆 Ranking do Brasil</h3>
+                <ul id="ranking-list" class="list-style"></ul>
+                <h3 style="margin-top:20px">📋 Extrato</h3>
+                <ul id="points-list" class="list-style"></ul>
+            </section>
+        </main>
+    </div>
+
+    <div id="scanner-modal" class="modal hidden">
+        <div class="camera-container">
+            <video id="video" autoplay playsinline></video>
+            <div id="scan-frame"></div>
+            <div class="scan-line"></div>
+        </div>
+        <button onclick="closeScanner()" class="btn-cancel">Cancelar</button>
+    </div>
+
+    <div id="success-modal" class="modal hidden">
+        <div class="success-card">
+            <div class="check-mark">✓</div>
+            <h2>Cupom Gerado!</h2>
+            <div class="coupon-box"><span id="coupon-code">------</span></div>
+            <button onclick="closeSuccess()" class="btn-redeem">Fechar</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
