@@ -9,6 +9,7 @@ function initGroupAccounts() {
         { name: "samille", pts: 1250 },
         { name: "maria clara", pts: 1000 },
         { name: "juan luiz", pts: 1500 },
+        { name: "Giliardi", pts: 1520 },
         { name: "daniel henrique", pts: 2022 }
     ];
     group.forEach(m => {
