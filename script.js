@@ -26,7 +26,7 @@ initGroupAccounts();
 
 // 2. ADMIN RESET
 function masterReset() {
-    if (confirm("Resetar todo o sistema?")) {
+    if (confirm("Botão Nuclear ☢️")) {
         localStorage.clear();
         location.reload();
     }
